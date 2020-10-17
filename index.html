@@ -458,10 +458,26 @@ git commit -m "heroku deploy"
             
 
             <div class="text-center"><img src="static/media/14.png" alt=""></div>
-            
-
 
         </section>
+
+
+        <section class="secbg">
+            <h2>migrateとloaddata</h2>
+
+            <p>デプロイしただけだと、DB内にmodels.pyで指定したテーブルは作られていない。そのため、マイグレーションを実行してテーブルを作る</p>
+
+            <p>初期データがあるならloaddataコマンドで反映させる。heroku内でmanage.pyを動かすので、heroku runを冒頭につける。</p>
+
+<pre><code>heroku run python3 manage.py makemigrations
+heroku run python3 manage.py migrate
+heroku run python3 manage.py loaddata ./アプリ名/fixture/jsonファイル
+</code></pre>
+        
+        </section>
+
+
+
         
         <section id="chap12" class="secbg">
             <h2>どうしてもうまく行かない時のチェック事項</h2>
